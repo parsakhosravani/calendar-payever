@@ -1,0 +1,38 @@
+.calendar-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-grid {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day {
+  min-height: 100px;
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.appointment {
+  margin: 4px 0;
+  cursor: move;
+}
+
+mat-toolbar {
+  justify-content: space-between;
+}

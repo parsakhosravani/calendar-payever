@@ -1,0 +1,42 @@
+<div class="calendar-container">
+  <mat-toolbar color="primary">
+    <span>Calendar App</span>
+    <button mat-raised-button (click)="openAppointmentForm()">Add Appointment</button>
+  </mat-toolbar>
+
+  <div class="calendar-grid">
+    <div class="weekdays">
+      <div *ngFor="let day of weekDays" class="weekday">{{ day }}</div>
+    </div>
+
+    <div class="days" cdkDropListGroup>
+      <div
+        *ngFor="let day of calendarDays"
+        class="day"
+        cdkDropList
+        [cdkDropListData]="day"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="date">{{ day | date: 'd' }}</div>
+
+        <ng-container *ngFor="let appointment of appointments$ | async">
+          <div
+            *ngIf="appointment.date.toDateString() === day.toDateString()"
+            class="appointment"
+            cdkDrag
+            [cdkDragData]="appointment"
+          >
+            <mat-card>
+              <mat-card-content>
+                {{ appointment.title }}
+                <button mat-icon-button (click)="deleteAppointment(appointment.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
