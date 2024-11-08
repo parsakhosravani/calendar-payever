@@ -31,7 +31,7 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 8px;
-      height: calc(100% - 40px); // Subtract weekdays height
+      height: calc(100% - 40px);
 
       .day {
         background: #f5f5f5;
@@ -47,8 +47,7 @@
         .appointment {
           margin: 4px 0;
           cursor: move;
-          padding: 6px 8px;
-          background-color: #1a73e8;
+          background-color: #3f51b5;
           color: white;
           border-radius: 4px;
           font-size: 0.9rem;
@@ -67,19 +66,38 @@
   }
 }
 
-//  styles for drag and drop
+// styles for drag and drop
 .cdk-drag-preview {
-  box-sizing: border-box;
+  margin: 4px 0;
+  background-color: #3f51b5;
+  color: white;
   border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  font-size: 0.9rem;
+  box-shadow:
+    0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14),
     0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    box-shadow:
+      0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
 }
 
 .cdk-drag-placeholder {
   opacity: 0;
+
+  &:hover {
+    opacity: 0;
+  }
 }
 
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+
+  &:hover {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
 }

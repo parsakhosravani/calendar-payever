@@ -26,7 +26,7 @@
             cdkDrag
             [cdkDragData]="appointment"
           >
-            <mat-card>
+            <mat-card [ngStyle]="{ 'background-color': '#3f51b5' }">
               <mat-card-content>
                 {{ appointment.title }}
                 <button mat-icon-button (click)="deleteAppointment(appointment.id)">
