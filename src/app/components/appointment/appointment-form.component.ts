@@ -6,6 +6,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-appointment-form',
@@ -19,6 +24,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatCardModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
 })
 export class AppointmentFormComponent {
