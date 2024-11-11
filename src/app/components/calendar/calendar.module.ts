@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CalendarComponent } from './calendar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
@@ -13,14 +14,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
-import { AppointmentFormComponent } from '../appointment/appointment-form.component';
-import { CalendarComponent } from './calendar.component';
-
 @NgModule({
   declarations: [],
   imports: [
-    AppointmentFormComponent,
     CommonModule,
+    CalendarComponent,
     ReactiveFormsModule,
     DragDropModule,
     MatCardModule,

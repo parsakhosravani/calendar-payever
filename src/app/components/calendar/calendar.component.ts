@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { DragDropModule, CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -79,7 +79,8 @@ export class CalendarComponent implements OnInit {
     this.appointmentService.deleteAppointment(id);
   }
 
-  drop(event: CdkDragDrop<Date, Date, string>) {
-    this.appointmentService.moveAppointment(event);
+  drop(event: CdkDragDrop<any[]>) {
+    const previousIndex = this.calendarDays.findIndex((d) => d === event.item.data);
+    moveItemInArray(this.calendarDays, previousIndex, event.currentIndex);
   }
 }
