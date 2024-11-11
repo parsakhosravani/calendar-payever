@@ -34,7 +34,6 @@ import { AppointmentFormComponent } from '../appointment/appointment-form.compon
     MatNativeDateModule,
     MatToolbarModule,
     MatIconModule,
-    AppointmentFormComponent,
   ],
 })
 export class CalendarComponent implements OnInit {
