@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -32,7 +32,7 @@ import { Subscription } from 'rxjs';
     MatIconModule,
   ],
 })
-export class AppointmentFormComponent {
+export class AppointmentFormComponent implements OnDestroy {
   appointmentForm: FormGroup;
   private subscription: Subscription = new Subscription();
 

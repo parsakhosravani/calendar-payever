@@ -79,7 +79,7 @@ export class CalendarComponent implements OnInit {
     this.appointmentService.deleteAppointment(id);
   }
 
-  drop(event: CdkDragDrop<any[]>) {
+  drop(event: CdkDragDrop<[]>) {
     const previousIndex = this.calendarDays.findIndex((d) => d === event.item.data);
     moveItemInArray(this.calendarDays, previousIndex, event.currentIndex);
   }
