@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Appointment } from '../models/appointment.interface';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,19 +12,15 @@ export class AppointmentService {
   appointments$ = this.appointments.asObservable();
 
   addAppointment(appointment: Appointment) {
-    const current = this.appointments.getValue();
-    this.appointments.next([
-      ...current,
-      {
-        ...appointment,
-        id: Date.now().toString(),
-      },
-    ]);
+    const newAppointment = {
+      ...appointment,
+      id: Date.now().toString(),
+    };
+    this.appointments.next([...this.appointments.getValue(), newAppointment]);
   }
 
   deleteAppointment(id: string) {
-    const current = this.appointments.getValue();
-    this.appointments.next(current.filter((app) => app.id !== id));
+    this.appointments.next(this.appointments.getValue().filter(app => app.id !== id));
   }
 
   moveAppointment(event: CdkDragDrop<Date>) {
@@ -31,7 +28,7 @@ export class AppointmentService {
     const appointment = event.item.data;
     const newDate = event.container.data;
 
-    const updated = current.map((app) => {
+    const updated = current.map(app => {
       if (app.id === appointment.id) {
         return { ...app, date: newDate };
       }
@@ -39,5 +36,11 @@ export class AppointmentService {
     });
 
     this.appointments.next(updated);
+  }
+
+  getAppointmentsByDate(date: Date): Observable<Appointment[]> {
+    return this.appointments$.pipe(
+      map(appointments => appointments.filter(app => app.date.toDateString() === date.toDateString()))
+    );
   }
 }
