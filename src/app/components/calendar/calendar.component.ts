@@ -15,6 +15,7 @@ import { Appointment } from '../appointment/models/appointment.interface';
 import { Observable } from 'rxjs';
 import { AppointmentService } from '../appointment/services/appointment.service';
 import { AppointmentFormComponent } from '../appointment/appointment-form.component';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-calendar',
@@ -50,6 +51,13 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.generateCalendarDays();
+    this.appointments$
+      .pipe(
+        map((appointments: Appointment[]) => {
+          return appointments;
+        })
+      )
+      .subscribe();
   }
 
   generateCalendarDays() {

@@ -20,7 +20,7 @@ export class AppointmentService {
   }
 
   deleteAppointment(id: string) {
-    this.appointments.next(this.appointments.getValue().filter(app => app.id !== id));
+    this.appointments.next(this.appointments.getValue().filter((app) => app.id !== id));
   }
 
   moveAppointment(event: CdkDragDrop<Date>) {
@@ -28,7 +28,7 @@ export class AppointmentService {
     const appointment = event.item.data;
     const newDate = event.container.data;
 
-    const updated = current.map(app => {
+    const updated = current.map((app) => {
       if (app.id === appointment.id) {
         return { ...app, date: newDate };
       }
@@ -40,7 +40,9 @@ export class AppointmentService {
 
   getAppointmentsByDate(date: Date): Observable<Appointment[]> {
     return this.appointments$.pipe(
-      map(appointments => appointments.filter(app => app.date.toDateString() === date.toDateString()))
+      map((appointments) =>
+        appointments.filter((app) => app.date.toDateString() === date.toDateString())
+      )
     );
   }
 }
