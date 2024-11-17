@@ -5,7 +5,12 @@
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" required />
-      <mat-error *ngIf="appointmentForm.get('title')?.hasError('required') && appointmentForm.get('title')?.touched">
+      <mat-error
+        *ngIf="
+          appointmentForm.get('title')?.hasError('required') &&
+          appointmentForm.get('title')?.touched
+        "
+      >
         Title is required.
       </mat-error>
     </mat-form-field>
@@ -15,7 +20,11 @@
       <input matInput [matDatepicker]="picker" formControlName="date" required />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="appointmentForm.get('date')?.hasError('required') && appointmentForm.get('date')?.touched">
+      <mat-error
+        *ngIf="
+          appointmentForm.get('date')?.hasError('required') && appointmentForm.get('date')?.touched
+        "
+      >
         Date is required.
       </mat-error>
     </mat-form-field>
@@ -28,7 +37,7 @@
 
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!appointmentForm.valid">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!(isFormValid$ | async)">
       Save
     </button>
   </mat-dialog-actions>

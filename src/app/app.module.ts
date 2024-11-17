@@ -5,14 +5,9 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    AppComponent,
-  ],
+  declarations: [],
+  imports: [BrowserModule, RouterModule.forRoot(routes), AppComponent],
   providers: [],
-  bootstrap: []
+  bootstrap: [],
 })
-export class AppModule {} 
+export class AppModule {}

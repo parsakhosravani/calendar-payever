@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -20,7 +20,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.scss',
+  styleUrls: ['./calendar.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -43,8 +43,8 @@ export class CalendarComponent implements OnInit {
   appointments$: Observable<Appointment[]>;
 
   constructor(
-    private dialog: MatDialog,
-    private appointmentService: AppointmentService
+    @Inject(MatDialog) private dialog: MatDialog,
+    @Inject(AppointmentService) private appointmentService: AppointmentService
   ) {
     this.appointments$ = this.appointmentService.appointments$;
   }
