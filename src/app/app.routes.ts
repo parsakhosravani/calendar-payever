@@ -1,17 +1,9 @@
 import { Routes } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 export const routes: Routes = [
-  {
-    path: 'calendar',
-    loadChildren: () =>
-      import('./components/calendar/calendar.module').then((m) => m.CalendarModule),
-  },
-  {
-    path: 'appointments',
-    loadChildren: () =>
-      import('./components/appointment/appointment-form.component').then(
-        (m) => m.AppointmentFormComponent
-      ),
-  },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'calendar', component: CalendarComponent },
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
 ];
