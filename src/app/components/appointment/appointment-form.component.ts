@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-appointment-form',
   templateUrl: './appointment-form.component.html',
-  styleUrl: './appointment-form.component.scss',
+  styleUrls: ['./appointment-form.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
