@@ -41,16 +41,21 @@ export class CalendarComponent implements OnInit {
   weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   calendarDays: Date[] = [];
   appointments$: Observable<Appointment[]>;
+  currentMonth: Date;
+  selectedMonth: Date;
 
   constructor(
     @Inject(MatDialog) private dialog: MatDialog,
     @Inject(AppointmentService) private appointmentService: AppointmentService
   ) {
     this.appointments$ = this.appointmentService.appointments$;
+    this.currentMonth = new Date();
+    this.selectedMonth = new Date();
   }
 
   ngOnInit() {
     this.generateCalendarDays();
+    this.updateSelectedMonth();
     this.appointments$
       .pipe(
         map((appointments: Appointment[]) => {
@@ -60,14 +65,24 @@ export class CalendarComponent implements OnInit {
       .subscribe();
   }
 
+  changeMonth(direction: number) {
+    this.currentMonth.setMonth(this.currentMonth.getMonth() + direction);
+    this.generateCalendarDays();
+    this.updateSelectedMonth();
+  }
+
   generateCalendarDays() {
-    const today = new Date();
-    const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+    const firstDay = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth(), 1);
+    const lastDay = new Date(this.currentMonth.getFullYear(), this.currentMonth.getMonth() + 1, 0);
+    this.calendarDays = [];
 
     for (let d = firstDay; d <= lastDay; d.setDate(d.getDate() + 1)) {
       this.calendarDays.push(new Date(d));
     }
+  }
+
+  updateSelectedMonth() {
+    this.selectedMonth = new Date(this.currentMonth);
   }
 
   openAppointmentForm() {

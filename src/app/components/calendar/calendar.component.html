@@ -1,7 +1,15 @@
 <div class="calendar-container">
   <mat-toolbar color="primary">
     <span>Calendar App</span>
+    <button mat-icon-button (click)="changeMonth(-1)">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span class="current-month">{{ selectedMonth | date: 'MMMM yyyy' }}</span>
+    <button mat-icon-button (click)="changeMonth(1)">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
     <button mat-raised-button (click)="openAppointmentForm()">Add Appointment</button>
+  
   </mat-toolbar>
 
   <div class="calendar-grid">
