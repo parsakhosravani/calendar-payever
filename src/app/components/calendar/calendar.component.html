@@ -1,6 +1,6 @@
 <div class="calendar-container">
   <mat-toolbar color="primary">
-    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Calendar App</a>
+    <span routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Calendar App</span>
     <button mat-icon-button (click)="changeMonth(-1)">
       <mat-icon>chevron_left</mat-icon>
     </button>
@@ -24,7 +24,7 @@
         [cdkDropListData]="day"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="date">{{ day | date: 'd' }}</div>
+        <div class="date">{{ formatDate(day) }}</div>
 
         <ng-container *ngFor="let appointment of appointments$ | async">
           <div

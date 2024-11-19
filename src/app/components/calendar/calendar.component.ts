@@ -17,6 +17,7 @@ import { AppointmentService } from '../appointment/services/appointment.service'
 import { AppointmentFormComponent } from '../appointment/appointment-form.component';
 import { map } from 'rxjs/operators';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DateService } from '../../services/date.service';
 
 @Component({
   selector: 'app-calendar',
@@ -49,7 +50,8 @@ export class CalendarComponent implements OnInit {
 
   constructor(
     @Inject(MatDialog) private dialog: MatDialog,
-    @Inject(AppointmentService) private appointmentService: AppointmentService
+    @Inject(AppointmentService) private appointmentService: AppointmentService,
+    private dateService: DateService
   ) {
     this.appointments$ = this.appointmentService.appointments$;
     this.currentMonth = new Date();
@@ -106,5 +108,9 @@ export class CalendarComponent implements OnInit {
 
   drop(event: CdkDragDrop<Date, Date, string>) {
     this.appointmentService.moveAppointment(event);
+  }
+
+  formatDate(date: Date): string {
+    return this.dateService.formatDate(date);
   }
 }

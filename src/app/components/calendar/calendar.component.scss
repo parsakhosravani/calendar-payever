@@ -2,7 +2,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-
+  span {
+    cursor: pointer;
+  }
   mat-toolbar {
     display: flex;
     justify-content: space-between;
