@@ -37,7 +37,12 @@
 
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!(isFormValid$ | async)">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="(isFormValid$ | async) === false"
+    >
       Save
     </button>
   </mat-dialog-actions>
