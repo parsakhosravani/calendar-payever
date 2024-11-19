@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 import { AppointmentService } from '../appointment/services/appointment.service';
 import { AppointmentFormComponent } from '../appointment/appointment-form.component';
 import { map } from 'rxjs/operators';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -35,6 +36,8 @@ import { map } from 'rxjs/operators';
     MatNativeDateModule,
     MatToolbarModule,
     MatIconModule,
+    RouterLink,
+    RouterLinkActive,
   ],
 })
 export class CalendarComponent implements OnInit {
